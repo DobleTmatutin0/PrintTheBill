@@ -20,7 +20,7 @@ public class BackendApplication {
 		return Response.response(
 			HttpStatus.OK,
 			"Server Online",
-			"Hello Labprog!");
+			"Hola Labprog!");
 	}
 
 	public static void main(String[] args) {

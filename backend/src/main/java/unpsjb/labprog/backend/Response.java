@@ -18,4 +18,8 @@ public class Response {
 		return new ResponseEntity<Object>(map,status);
 	}
 
+	public static ResponseEntity<Object> ok(Object responseObj) {
+		return response(HttpStatus.OK, "OK", responseObj);
+	}
+
 }
