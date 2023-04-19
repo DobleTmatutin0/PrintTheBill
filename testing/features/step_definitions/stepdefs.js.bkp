@@ -3,6 +3,21 @@ const { Given, When, Then } = require('cucumber');
 const jd = require('json-diff');
 const request = require('sync-request');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Given('el listado de la facturación de espectáculos', function (espectaculos) {
    this.invoice = JSON.parse(espectaculos);
 });

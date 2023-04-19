@@ -19,4 +19,8 @@ public class PlayService {
         repository.findAll().forEach(e -> result.add(e));
         return result;
     }
+
+    public Play findById(int id) {
+        return repository.findById(id).orElse(null);
+    }
 }
