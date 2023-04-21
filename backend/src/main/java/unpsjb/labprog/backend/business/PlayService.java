@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import unpsjb.labprog.backend.model.Play;
 
@@ -26,5 +27,10 @@ public class PlayService {
 
     public Play findByCode(String code) {
         return repository.findByCode(code).orElse(null);
+    }
+
+    @Transactional
+    public Play save(Play aPlay) {
+        return repository.save(aPlay);
     }
 }
