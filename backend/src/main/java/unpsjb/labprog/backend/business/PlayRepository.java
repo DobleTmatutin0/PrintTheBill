@@ -1,5 +1,8 @@
 package unpsjb.labprog.backend.business;
 
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -7,5 +10,8 @@ import unpsjb.labprog.backend.model.Play;
 
 @Repository
 public interface PlayRepository extends CrudRepository<Play, Integer>{
-    // Solo los metodos por defecto.
+
+    @Query("SELECT e FROM Play e WHERE e.code = ?1")
+    Optional<Play> findByCode(String code);
+    
 }

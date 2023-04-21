@@ -3,7 +3,7 @@ const { Given, When, Then } = require('cucumber');
 const jd = require('json-diff');
 const request = require('sync-request');
 
-Given('que existen la obra {string}', function (string) {
+Given('que existe la obra {string}', function (codigo) {
     // Write code here that turns the phrase above into concrete actions
     return true;
 });
@@ -18,24 +18,38 @@ When(
         );
 
         this.response = JSON.parse(res.body, 'utf8');
-        
-        return (res.statusCode == 200);
+
+        return assert.equal(res.statusCode, 200);
     }
 );
 
+
+When('solicito recuperar la obra con {string}', function (codigo) {
+    let res = request(
+        'GET',
+        'http://backend:8080/plays/'+codigo
+    );
+
+    this.response = JSON.parse(res.body, 'utf8');
+
+    return assert.equal(res.statusCode, 200);
+});
+
+
+
 Then('esperamos recibir estado {int}', function (status) {
-    return (this.response.status == status);
+    return assert.equal(this.response.status, status);
 });
 
 Then('el mensaje de respuesta {string}', function (message) {
     // Write code here that turns the phrase above into concrete actions
-    return (this.response.message == message);
+    return assert.equal(this.response.message, message);
 });
 
 Then('los siguientes datos:', function (docString) {
     // Write code here that turns the phrase above into concrete actions
     let obras = JSON.parse(docString);
-    
+
     for (let o of this.response.data) {
         delete o.id;
     }
@@ -53,4 +67,17 @@ Then('los siguientes datos:', function (docString) {
     // console.log(d);
 
     return assert.equal(d, null);
+});
+
+
+
+Then('la obra con {string}, {string}, {string}', function (codigo, nombre, tipo) {
+    
+    if (this.response.status == 200){
+        assert.equal(this.response.data.code, codigo);
+        assert.equal(this.response.data.name, nombre);
+        assert.equal(this.response.data.type, tipo);
+    }
+
+    return true;
 });

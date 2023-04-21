@@ -23,4 +23,8 @@ public class PlayService {
     public Play findById(int id) {
         return repository.findById(id).orElse(null);
     }
+
+    public Play findByCode(String code) {
+        return repository.findByCode(code).orElse(null);
+    }
 }

@@ -23,11 +23,19 @@ public class PlayPresenter {
     return Response.ok(service.findAll());
   }
 
-  @RequestMapping(value="/{id}", method=RequestMethod.GET)
+  @RequestMapping(value="/id/{id}", method=RequestMethod.GET)
   public ResponseEntity<Object> findById(@PathVariable("id") int id) {    
     Play aPlayOrNull = service.findById(id);
     return (aPlayOrNull != null)?
       Response.ok(aPlayOrNull):
       Response.notFound();
+  }
+
+  @RequestMapping(value="/{code}", method=RequestMethod.GET)
+  public ResponseEntity<Object> findByCode(@PathVariable("code") String code) {    
+    Play aPlayOrNull = service.findByCode(code);
+    return (aPlayOrNull != null)?
+      Response.ok(aPlayOrNull, "Obra recuperada correctamente"):
+      Response.notFound("Obra no existe");
   }
 }
