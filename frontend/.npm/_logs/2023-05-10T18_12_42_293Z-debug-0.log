@@ -1,0 +1,143 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@9.5.1
+2 info using node@v19.8.1
+3 timing npm:load:whichnode Completed in 4ms
+4 timing config:load:defaults Completed in 3ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 timing config:load:cli Completed in 3ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/home/node/cli/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 1ms
+11 timing config:load:file:/home/node/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/usr/local/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:setEnvs Completed in 1ms
+16 timing config:load Completed in 11ms
+17 timing npm:load:configload Completed in 11ms
+18 timing npm:load:mkdirpcache Completed in 1ms
+19 timing npm:load:mkdirplogs Completed in 0ms
+20 verbose title npm install @ng-bootstrap/ng-bootstrap@14.1.1
+21 verbose argv "install" "@ng-bootstrap/ng-bootstrap@14.1.1"
+22 timing npm:load:setTitle Completed in 2ms
+23 timing config:load:flatten Completed in 6ms
+24 timing npm:load:display Completed in 7ms
+25 verbose logfile logs-max:10 dir:/home/node/.npm/_logs/2023-05-10T18_12_42_293Z-
+26 verbose logfile /home/node/.npm/_logs/2023-05-10T18_12_42_293Z-debug-0.log
+27 timing npm:load:logFile Completed in 9ms
+28 timing npm:load:timers Completed in 0ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 35ms
+31 timing arborist:ctor Completed in 1ms
+32 silly logfile done cleaning log files
+33 timing idealTree:init Completed in 1098ms
+34 timing idealTree:userRequests Completed in 13ms
+35 silly idealTree buildDeps
+36 silly fetch manifest @ng-bootstrap/ng-bootstrap@14.1.1
+37 verbose shrinkwrap failed to load node_modules/.package-lock.json out of date, updated: node_modules
+38 http fetch GET 200 https://registry.npmjs.org/@ng-bootstrap%2fng-bootstrap 1210ms (cache miss)
+39 silly fetch manifest @angular/common@^15.2.0
+40 http fetch GET 200 https://registry.npmjs.org/npm 2468ms (cache miss)
+41 http fetch GET 200 https://registry.npmjs.org/@angular%2fcommon 230ms (cache miss)
+42 silly fetch manifest @angular/core@^15.2.0
+43 http fetch GET 200 https://registry.npmjs.org/@angular%2fcore 246ms (cache miss)
+44 silly fetch manifest rxjs@~7.8.0
+45 http fetch GET 200 https://registry.npmjs.org/rxjs 90ms (cache miss)
+46 silly fetch manifest zone.js@~0.12.0
+47 http fetch GET 200 https://registry.npmjs.org/zone.js 66ms (cache miss)
+48 silly fetch manifest @angular/forms@^15.2.0
+49 http fetch GET 200 https://registry.npmjs.org/@angular%2fforms 251ms (cache miss)
+50 silly fetch manifest @angular/platform-browser@^15.2.0
+51 http fetch GET 200 https://registry.npmjs.org/@angular%2fplatform-browser 314ms (cache miss)
+52 silly fetch manifest @angular/animations@^15.2.0
+53 http fetch GET 200 https://registry.npmjs.org/@angular%2fanimations 223ms (cache miss)
+54 silly fetch manifest @angular/localize@^15.0.0
+55 http fetch GET 200 https://registry.npmjs.org/@angular%2flocalize 191ms (cache miss)
+56 silly fetch manifest @angular/compiler@^15.2.0
+57 http fetch GET 200 https://registry.npmjs.org/@angular%2fcompiler 256ms (cache miss)
+58 silly fetch manifest @angular/compiler-cli@^15.2.0
+59 http fetch GET 200 https://registry.npmjs.org/@angular%2fcompiler-cli 338ms (cache miss)
+60 silly fetch manifest typescript@~4.9.4
+61 http fetch GET 200 https://registry.npmjs.org/typescript 2077ms (cache miss)
+62 silly fetch manifest @popperjs/core@^2.11.6
+63 http fetch GET 200 https://registry.npmjs.org/@popperjs%2fcore 129ms (cache miss)
+64 timing idealTree Completed in 7093ms
+65 timing command:install Completed in 7213ms
+66 notice
+66 notice New minor version of npm available! 9.5.1 -> 9.6.6
+66 notice Changelog: <https://github.com/npm/cli/releases/tag/v9.6.6>
+66 notice Run `npm install -g npm@9.6.6` to update!
+66 notice
+67 verbose stack Error: could not resolve
+67 verbose stack     at PlaceDep.failPeerConflict (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/place-dep.js:503:25)
+67 verbose stack     at new PlaceDep (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/place-dep.js:157:21)
+67 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:943:31
+67 verbose stack     at Array.map (<anonymous>)
+67 verbose stack     at [buildDepStep] (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:943:8)
+67 verbose stack     at async Arborist.buildIdealTree (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:207:7)
+67 verbose stack     at async Promise.all (index 1)
+67 verbose stack     at async Arborist.reify (/usr/local/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:159:5)
+67 verbose stack     at async Install.exec (/usr/local/lib/node_modules/npm/lib/commands/install.js:146:5)
+67 verbose stack     at async module.exports (/usr/local/lib/node_modules/npm/lib/cli.js:134:5)
+68 verbose cwd /home/node/cli
+69 verbose Linux 5.15.0-71-generic
+70 verbose node v19.8.1
+71 verbose npm  v9.5.1
+72 error code ERESOLVE
+73 error ERESOLVE could not resolve
+74 error
+75 error While resolving: cli@0.0.0
+75 error Found: @angular/core@15.2.4
+75 error node_modules/@angular/core
+75 error   peer @angular/core@"15.2.4" from @angular/animations@15.2.4
+75 error   node_modules/@angular/animations
+75 error     peerOptional @angular/animations@"15.2.4" from @angular/platform-browser@15.2.4
+75 error     node_modules/@angular/platform-browser
+75 error       peer @angular/platform-browser@"15.2.4" from @angular/forms@15.2.4
+75 error       node_modules/@angular/forms
+75 error         @angular/forms@"^15.2.0" from the root project
+75 error       3 more (@angular/platform-browser-dynamic, @angular/router, the root project)
+75 error     @angular/animations@"^15.2.0" from the root project
+75 error   peer @angular/core@"15.2.4" from @angular/common@15.2.4
+75 error   node_modules/@angular/common
+75 error     peer @angular/common@"15.2.4" from @angular/forms@15.2.4
+75 error     node_modules/@angular/forms
+75 error       @angular/forms@"^15.2.0" from the root project
+75 error     peer @angular/common@"15.2.4" from @angular/platform-browser@15.2.4
+75 error     node_modules/@angular/platform-browser
+75 error       peer @angular/platform-browser@"15.2.4" from @angular/forms@15.2.4
+75 error       node_modules/@angular/forms
+75 error         @angular/forms@"^15.2.0" from the root project
+75 error       3 more (@angular/platform-browser-dynamic, @angular/router, the root project)
+75 error     3 more (@angular/platform-browser-dynamic, @angular/router, the root project)
+75 error   6 more (@angular/compiler, @angular/forms, ...)
+75 error
+75 error Could not resolve dependency:
+75 error @ng-bootstrap/ng-bootstrap@"14.1.1" from the root project
+75 error
+75 error Conflicting peer dependency: @angular/core@15.2.9
+75 error node_modules/@angular/core
+75 error   peer @angular/core@"15.2.9" from @angular/forms@15.2.9
+75 error   node_modules/@angular/forms
+75 error     @angular/forms@"^15.2.0" from the root project
+75 error     peer @angular/forms@"^15.0.0" from @ng-bootstrap/ng-bootstrap@14.1.1
+75 error     node_modules/@ng-bootstrap/ng-bootstrap
+75 error       @ng-bootstrap/ng-bootstrap@"14.1.1" from the root project
+75 error
+75 error Fix the upstream dependency conflict, or retry
+75 error this command with --force or --legacy-peer-deps
+75 error to accept an incorrect (and potentially broken) dependency resolution.
+76 error
+76 error
+76 error For a full report see:
+76 error /home/node/.npm/_logs/2023-05-10T18_12_42_293Z-eresolve-report.txt
+77 verbose exit 1
+78 timing npm Completed in 7281ms
+79 verbose unfinished npm timer reify 1683742362351
+80 verbose unfinished npm timer reify:loadTrees 1683742362465
+81 verbose unfinished npm timer idealTree:buildDeps 1683742363580
+82 verbose unfinished npm timer idealTree:#root 1683742363581
+83 verbose code 1
+84 error A complete log of this run can be found in:
+84 error     /home/node/.npm/_logs/2023-05-10T18_12_42_293Z-debug-0.log

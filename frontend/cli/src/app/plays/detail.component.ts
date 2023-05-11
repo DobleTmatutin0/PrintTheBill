@@ -82,7 +82,7 @@ export class DetailComponent {
     if(id === "new"){
       this.play = <Play>{};
     } else {
-      this.playService.get(+id).subscribe((play) => (this.play = play));
+      this.playService.get(+id).subscribe((dataPackage) => (this.play = <Play>dataPackage.data));
     }
   }
 
@@ -91,8 +91,8 @@ export class DetailComponent {
   }
 
   save(): void {
-    this.playService.save(this.play).subscribe((play) => {
-      this.play = play;
+    this.playService.save(this.play).subscribe((dataPackage) => {
+      this.play = <Play>dataPackage.data;
       this.goBack();
     });
   }

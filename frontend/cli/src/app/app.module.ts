@@ -15,7 +15,7 @@ import { DetailComponent } from './plays/detail.component';
     HomeComponent,
     PlaysComponent,
     DetailComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

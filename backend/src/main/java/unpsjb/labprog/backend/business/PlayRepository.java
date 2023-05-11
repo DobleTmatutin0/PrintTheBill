@@ -5,11 +5,13 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import unpsjb.labprog.backend.model.Play;
 
 @Repository
-public interface PlayRepository extends CrudRepository<Play, Integer>{
+public interface PlayRepository extends CrudRepository<Play, Integer>, 
+PagingAndSortingRepository<Play, Integer> {
 
     @Query("SELECT e FROM Play e WHERE e.code = ?1")
     Optional<Play> findByCode(String code);

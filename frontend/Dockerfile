@@ -12,6 +12,8 @@ RUN apk update && apk add --no-cache bash
 RUN npm install -g typescript
 RUN npm install -g @angular/cli
 
+USER root
+
 # Establece el directorio de trabajo
 WORKDIR /home/node
 

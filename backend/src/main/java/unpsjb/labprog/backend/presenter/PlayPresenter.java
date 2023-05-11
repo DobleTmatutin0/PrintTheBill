@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("plays")
@@ -38,4 +40,12 @@ public class PlayPresenter {
       Response.ok(aPlayOrNull, "Obra recuperada correctamente"):
       Response.notFound("Obra no existe");
   }
+  
+    @RequestMapping(value="/page", method=RequestMethod.GET)
+  public ResponseEntity<Object> findByPage(
+    @RequestParam(defaultValue = "0") int page,
+    @RequestParam(defaultValue = "10") int size) {      
+      return Response.ok(service.findByPage(page, size));
+  }
+
 }
