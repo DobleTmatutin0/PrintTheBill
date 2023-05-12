@@ -5,8 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+<<<<<<< HEAD
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Page;
+=======
+import org.springframework.transaction.annotation.Transactional;
+>>>>>>> 96a1e9aabc9624310ac5d3ed46a6e7788ad81063
 
 import unpsjb.labprog.backend.model.Play;
 
@@ -36,5 +40,8 @@ public class PlayService {
             PageRequest.of(page, size)
         );
         //return result;
+    @Transactional
+    public Play save(Play aPlay) {
+        return repository.save(aPlay);
     }
 }

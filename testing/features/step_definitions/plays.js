@@ -4,8 +4,16 @@ const jd = require('json-diff');
 const request = require('sync-request');
 
 Given('que existe la obra {string}', function (codigo) {
-    // Write code here that turns the phrase above into concrete actions
-    return true;
+    
+    let res = request(
+        'GET',
+        'http://backend:8080/plays/'+codigo
+    );
+
+    this.aPlay = JSON.parse(res.body, 'utf8').data;
+    
+    // FIXME:
+    return assert.ok(true);
 });
 
 When(
@@ -34,6 +42,21 @@ When('solicito recuperar la obra con {string}', function (codigo) {
 
     return assert.equal(res.statusCode, 200);
 });
+
+When('solicito cambiar el nombre {string} de la obra con {string}',
+    function (nuevo_nombre, _codigo) {
+        this.aPlay.name = nuevo_nombre;
+        
+        let res = request(
+            'PUT',
+            'http://backend:8080/plays',
+            {json: this.aPlay}
+        );
+    
+        this.response = JSON.parse(res.body, 'utf8');
+    
+        return assert.equal(res.statusCode, 200);
+    });
 
 
 

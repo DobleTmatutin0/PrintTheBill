@@ -39,3 +39,17 @@ Característica: Gestión de obras
       | othello | Othello | tragedy | 200 | Obra recuperada correctamente |
       | as-like | As You Like It | comedy | 200 | Obra recuperada correctamente |
       | romjul | Romeo y Julieta | tragedy | 404 | Obra no existe |
+   
+   Esquema del escenario: Actualizar una obra
+      Dado que existe la obra "<codigo>"
+      Cuando solicito cambiar el nombre "<nuevo_nombre>" de la obra con "<codigo>"
+      Entonces esperamos recibir estado <estado>
+      Y el mensaje de respuesta "<mensaje>"
+      Y la obra con "<codigo>", "<nuevo_nombre>", "<tipo>"
+
+      Ejemplos:
+      | codigo  | nombre | nuevo_nombre    | tipo    | estado | mensaje                        |
+      | hamlet  | Hamlet | Jamlet          | tragedy | 200    | Obra actualizada correctamente |
+      | hamlet  | Jamlet | Hamlet          | tragedy | 200    | Obra actualizada correctamente |
+      
+
