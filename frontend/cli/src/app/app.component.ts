@@ -10,6 +10,7 @@ import { Component } from "@angular/core";
       <nav class="my-2 my-md-0 mr-md-3">
         <a class="p-2 text-dark" routerLink="/">Home</a>
         <a class="p-2 text-dark" routerLink="/plays">Plays</a>
+        <a class="p-2 text-dark" routerLink="/borderos/new">Nuevo Borderó</a>
       </nav>
     </div>
     <div class="container"> 

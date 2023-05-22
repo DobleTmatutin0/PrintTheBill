@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { PLAYS } from "./mock-plays";
 import { Play } from "./play";
 import { ResultsPage } from "../results-page";
 import { PlayService } from "./play.service";

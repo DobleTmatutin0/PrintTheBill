@@ -4,10 +4,13 @@ import { HomeComponent } from './home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PlaysComponent } from './plays/plays.component';
 import { DetailComponent } from './plays/detail.component';
+import { BorderosDetailComponent } from './borderos-detail/borderos-detail.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'plays', component: PlaysComponent },
   { path: 'plays/:id', component: DetailComponent },
+  { path: 'borderos/:id', component: BorderosDetailComponent },
 ];
 
 

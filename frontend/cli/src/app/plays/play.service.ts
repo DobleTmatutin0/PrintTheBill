@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { HttpClient } from "@angular/common/http";
-import { DataPackage } from "../data-package";
 
 import { Play } from "./play";
+import { DataPackage } from "../data-package";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root",
@@ -13,24 +13,36 @@ export class PlayService {
 
   constructor(private http: HttpClient) {}
 
-  all(): Observable<DataPackage> {
-    return this.http.get<DataPackage>(this.playsUrl); // REST
-  }
-
-  get(id: number): Observable<DataPackage> {    
-    return this.http.get<DataPackage>(`${this.playsUrl}/id/${id}`);
+  get(code: string): Observable<DataPackage> {
+    return this.http.get<DataPackage>(`${this.playsUrl}/${code}`);
   }
 
   save(play: Play): Observable<DataPackage> {
-    return this.http[play.id ? 'put' : 'post']<DataPackage>(this.playsUrl, play); // REST
+    return this.http[play.id ? "put" : "post"]<DataPackage>(
+      this.playsUrl,
+      play
+    );
+  }
+
+  all(): Observable<DataPackage> {
+    return this.http.get<DataPackage>(this.playsUrl);
   }
 
   delete(aPlay: Play): Observable<DataPackage> {
     return this.http.delete<DataPackage>(`${this.playsUrl}/${aPlay.code}`);
   }
 
-  byPage(page: number, size: number): Observable<DataPackage> {
-    return this.http.get<DataPackage>(`${this.playsUrl}/page?page=${page}&size=${size}`); // REST
+  byPage(page: number, cant: number): Observable<DataPackage> {
+    return this.http.get<DataPackage>(
+      `${this.playsUrl}?page=${page}&cant=${cant}`
+    );
   }
 
+  searchTypes(text: string): Observable<DataPackage> {
+    return this.http.get<DataPackage>(`${this.playsUrl}/types/${text}`);
+  }
+
+  search(text: string): Observable<DataPackage> {
+    return this.http.get<DataPackage>(`${this.playsUrl}/search/${text}`);
+  }
 }

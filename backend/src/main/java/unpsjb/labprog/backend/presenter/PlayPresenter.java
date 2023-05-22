@@ -57,4 +57,12 @@ public class PlayPresenter {
       "Obra actualizada correctamente"
       );
   }
+
+  @RequestMapping(method=RequestMethod.POST)
+  public ResponseEntity<Object> saveNew(@RequestBody Play aPlay) {    
+    return Response.ok(
+      service.save(aPlay), 
+      "Obra actualizada correctamente"
+      );
+  }
 }
