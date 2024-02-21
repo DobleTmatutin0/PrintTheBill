@@ -21,7 +21,20 @@
 1. Instalar [Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) y [Docker Compose](https://docs.docker.com/compose/install/)
     > **¡CONFIGURACIÓN IMPORTANTE ANTES DE CONTINUAR!**
     >
-    1. No olvidar los instructivos de post instalación para ejecutar docker sin priviliegios de `root`.
+    1. No olvidar los pasos de post instalación para ejecutar docker sin priviliegios de `root`.
+        ```sh
+        sudo groupadd docker
+        sudo usermod -aG docker $USER
+        ```
+        Para hacer efectivos los cambios en los grupos, reiniciar la terminal o ejecutar
+        ```sh
+        newgrp docker
+        ```
+    1. *Opcional:* Para que docker no arranque de forma automática al inicio:
+        ```sh
+        sudo systemctl disable docker.service
+        sudo systemctl disable containerd.service
+        ```
     1. Crear el archivo `/etc/docker/daemon.json` con el siguiente conenido:
         ```json
         {
