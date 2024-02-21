@@ -89,11 +89,15 @@
       ```
 1. Crear el proyecto Angular en el front:
     ```sh
-    $ ./lpl sh front
-    [frontend]$ ng new cli --minimal -S -g --defaults 
+    $ ./lpl sh frontend
+    [frontend:node]$ ng new cli --minimal -S -g --defaults 
     ```
 
+1. Detener los servidores `./lpl down`
+
 1. Descomentar linea indicadas en `docker-compose.yml`.
+
+1. Levantar los servidores `./lpl up`
 
 1. Verificar funcionamiento ingresando a http://localhost:4200/ .
 
