@@ -40,6 +40,9 @@ case "$1" in
   test ) echo "Testing"
     docker compose run --rm testing
     ;;
+  staging ) echo "Cargando staging $2"
+    cat ./staging/$2.sql | docker exec -i database psql -q -U APP -d labprog
+    ;;
   * ) echo "Opción inválida."
       ;;
 esac
