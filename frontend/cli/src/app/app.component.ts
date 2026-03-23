@@ -8,7 +8,7 @@ import { RouterOutlet } from '@angular/router';
     <div class="d-flex flex-column flex-md-row align-item-center p-3">
         <h5 class="my-0 mr-md-auto font-weight-normal">Print the Bill</h5>
         <nav class="my-2 my-md-0 mr-md-3">
-            <a class="p-2 text-dark" href="#">Plays</a>
+            <a class="p-2 text-dark" href="plays">Plays</a>
         </nav>
     </div>
     <div class="container">
