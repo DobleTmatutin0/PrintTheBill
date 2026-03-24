@@ -26,6 +26,10 @@ public class Response {
 		return response(HttpStatus.OK, msj, responseObj);
 	}
 
+    public static ResponseEntity<Object> error(Object responseObj, String msj) {
+		return response(HttpStatus.BAD_REQUEST, msj, responseObj);
+	}
+
     public static ResponseEntity<Object> notFound() {
         return response(HttpStatus.NOT_FOUND, "Not found", null);
     }
