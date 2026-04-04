@@ -1,7 +1,7 @@
 import { CommonModule, Location, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Play } from './play';
+import { Play } from '../models/play';
 import { ActivatedRoute } from '@angular/router';
 import { PlayService } from './play.service';
 
@@ -31,7 +31,7 @@ import { PlayService } from './play.service';
                 </div>
                 <div class="form-group">
                     <label for="type">Tipo:</label>
-                    <select name="type" placeholder="Tipo" class="form-control" [(ngModel)]="play.type">
+                    <select name="type" placeholder="Tipo" class="form-control" [(ngModel)]="play.type.type">
                         <option value="Comedy">Comedia</option>
                         <option value="Tragedy">Tragedia</option>
                     </select>    
@@ -57,8 +57,8 @@ export class PlaysDetailComponent {
     ) {}
 
     get(): void {
-        const id = +this.route.snapshot.paramMap.get('id')!;
-        this.playService.get(id).subscribe(play => this.play = play);
+        const code = this.route.snapshot.paramMap.get('code')!;
+        this.playService.get(code).subscribe(dataPackage => this.play = <Play> dataPackage.data);
     }
 
     goBack(): void {
