@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Play } from './play';
-import { MOCK_PLAYS } from './mock-plays';
+import { Play } from '../models/play';
 import { Observable, of } from 'rxjs';
+import { DataPackage } from '../dataPackage';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlayService {
-    constructor() { }
+    private playsUrl = 'rest/plays';
+    
+    constructor(
+        private http: HttpClient
+    ) { }
 
-    get(id: number): Observable<Play> {
-        return of(MOCK_PLAYS.find(play => play.id === id)!);
+    all(): Observable<DataPackage> {
+        return this.http.get<DataPackage>(this.playsUrl);
+    }
+
+    get(code: string): Observable<DataPackage> {
+        return this.http.get<DataPackage>(`${this.playsUrl}/${code}`);
     }
 
     save(play: Play): Observable<Play> {
-        let formerPlay = MOCK_PLAYS.find((formerPlay) => formerPlay.id === play.id)!;
+        let formerPlay = <Play>{};
         Object.assign(formerPlay, play);
         return of(formerPlay);
     }
