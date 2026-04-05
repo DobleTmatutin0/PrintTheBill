@@ -1,6 +1,7 @@
 package unpsjb.labprog.backend.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +16,8 @@ import lombok.NoArgsConstructor;
 @Getter
 @Setter
 @NoArgsConstructor
+
+@Table(name = "play_type")
 
 public class PlayType {
 
