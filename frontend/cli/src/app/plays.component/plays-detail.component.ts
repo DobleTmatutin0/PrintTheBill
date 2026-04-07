@@ -1,5 +1,5 @@
 import { CommonModule, Location, UpperCasePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Play } from '../models/play';
 import { ActivatedRoute } from '@angular/router';
@@ -12,39 +12,7 @@ import { PlayService } from './play.service';
         UpperCasePipe,
         FormsModule
     ],
-    template: ` 
-        <div *ngIf="play">
-            <h2>{{ play.name | uppercase }}</h2>
-            <form #form="ngForm">
-                <div class="form-group">
-                    <label for="code">Codigo:</label>
-                    <input name="code" placeholder="Codigo" class="form-control" [(ngModel)]="play.code">    
-                </div>                
-                <div class="form-group">
-                    <label for="name">Nombre:</label>
-                    <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="play.name" required #name="ngModel">
-                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
-                        <div *ngIf="name.errors?.['required']">
-                            El nombre de la obra es obligatorio
-                        </div>
-                    </div>    
-                </div>
-                <div class="form-group">
-                    <label for="type">Tipo:</label>
-                    <select name="type" placeholder="Tipo" class="form-control" [(ngModel)]="play.type.type">
-                        <option value="Comedy">Comedia</option>
-                        <option value="Tragedy">Tragedia</option>
-                    </select>    
-                </div>
-                <button class="btn btn-danger" (click)="goBack()">
-                    Cancelar
-                </button>
-                <button class="btn btn-success" (click)="save()" [disabled]="form.invalid">
-                    Guardar
-                </button> 
-            </form>    
-        </div>
-    `,
+    templateUrl: 'plays-detail.component.html',
     styles: ``,
 })
 export class PlaysDetailComponent {
@@ -53,12 +21,16 @@ export class PlaysDetailComponent {
     constructor(
         private route: ActivatedRoute,
         private playService: PlayService,
-        private location: Location
+        private location: Location,
+        private cdr: ChangeDetectorRef
     ) {}
 
     get(): void {
         const code = this.route.snapshot.paramMap.get('code')!;
-        this.playService.get(code).subscribe(dataPackage => this.play = <Play> dataPackage.data);
+        this.playService.get(code).subscribe(dataPackage => {
+            this.play = <Play> dataPackage.data;
+            this.cdr.detectChanges();
+        });
     }
 
     goBack(): void {
@@ -72,4 +44,5 @@ export class PlaysDetailComponent {
     ngOnInit() {
         this.get();
     }
- }
+ 
+}
