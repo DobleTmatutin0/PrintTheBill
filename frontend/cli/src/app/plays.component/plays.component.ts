@@ -23,8 +23,8 @@ export class PlaysComponent {
 
     getPlays(): void {
         this.playService.all().subscribe(dataPackage => {
-            this.plays = <Play[]> dataPackage.data
-            this.cdr.detectChanges()
+            this.plays = <Play[]> dataPackage.data;
+            this.cdr.detectChanges();
         });
     }
 
