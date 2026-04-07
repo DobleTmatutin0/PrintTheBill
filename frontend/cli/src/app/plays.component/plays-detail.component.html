@@ -16,7 +16,11 @@
         </div>
         <div class="form-group">
             <label for="type">Tipo:</label>
-            <select name="type" placeholder="Tipo" class="form-control" [(ngModel)]="play.type.type">
+            <select name="type"
+                placeholder="Tipo"
+                class="form-control"
+                [(ngModel)]="play.type.id"
+            >
                 <option value="Comedy">Comedia</option>
                 <option value="Tragedy">Tragedia</option>
             </select>    
