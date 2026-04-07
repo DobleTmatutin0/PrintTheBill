@@ -19,7 +19,7 @@ export class PlayService {
     }
 
     get(code: string): Observable<DataPackage> {
-        return this.http.get<DataPackage>(`${this.playsUrl}/${code}`);
+        return this.http.get<DataPackage>(`${this.playsUrl}/code/${code}`);
     }
 
     save(play: Play): Observable<Play> {
