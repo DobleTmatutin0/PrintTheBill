@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Play } from '../models/play';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { DataPackage } from '../dataPackage';
 import { HttpClient } from '@angular/common/http';
 
@@ -22,9 +22,7 @@ export class PlayService {
         return this.http.get<DataPackage>(`${this.playsUrl}/code/${code}`);
     }
 
-    save(play: Play): Observable<Play> {
-        let formerPlay = <Play>{};
-        Object.assign(formerPlay, play);
-        return of(formerPlay);
+    save(play: Play): Observable<DataPackage> {
+        return this.http.put<DataPackage>(this.playsUrl, play);
     }
 }

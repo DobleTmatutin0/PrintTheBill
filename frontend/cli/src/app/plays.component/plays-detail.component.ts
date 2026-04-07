@@ -38,7 +38,10 @@ export class PlaysDetailComponent {
     }
 
     save(): void {
-        this.playService.save(this.play).subscribe(play => {this.play = play; this.goBack()});
+        this.playService.save(this.play).subscribe(dataPackage => {
+            this.play = <Play> dataPackage.data;
+            this.goBack();
+        });
     }
 
     ngOnInit() {
