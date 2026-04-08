@@ -56,6 +56,7 @@ export class PlaysDetailComponent {
     }
 
     ngOnInit() {
+        this.getPlayTypes();
         this.get();
     }
  
