@@ -21,8 +21,7 @@
                 class="form-control"
                 [(ngModel)]="play.type.id"
             >
-                <option value="Comedy">Comedia</option>
-                <option value="Tragedy">Tragedia</option>
+                <option *ngFor = "let type of playTypes" [ngValue] = "type.id">{{ type.name }}</option>
             </select>    
         </div>
         <button class="btn btn-danger" (click)="goBack()">

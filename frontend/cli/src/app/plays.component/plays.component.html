@@ -13,7 +13,7 @@
                 <td>{{ i + 1 }}</td>
                 <td>{{ play.code }}</td>
                 <td>{{ play.name }}</td>
-                <td *ngIf = "play.type">{{ play.type.type }}</td> 
+                <td *ngIf = "play.type">{{ play.type.name }}</td> 
                 <td>
                     <a routerLink="/plays/{{play.code}}">
                         <i class="fa-solid fa-pencil"></i>
