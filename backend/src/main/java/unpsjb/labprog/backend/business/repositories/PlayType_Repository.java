@@ -10,6 +10,6 @@ import unpsjb.labprog.backend.model.PlayType;
 public interface PlayType_Repository extends JpaRepository<PlayType, Integer>{
     // Default methods
 
-    @Query("SELECT pt FROM PlayType pt WHERE LOWER(pt.type) LIKE ?1")
+    @Query("SELECT pt FROM PlayType pt WHERE LOWER(pt.name) LIKE ?1")
     List<PlayType> search(String term);
 }
