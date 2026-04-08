@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { PlayService } from './play.service';
+import { PlayService } from '../services/play.service';
 import { Play } from '../models/play';
 
 @Component({
