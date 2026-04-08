@@ -26,6 +26,6 @@ public class PlayType {
     private int id;
 
     @Column(unique = true)
-    private String type;
+    private String name;
     
 }
