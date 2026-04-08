@@ -3,7 +3,9 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Play } from '../models/play';
 import { ActivatedRoute } from '@angular/router';
-import { PlayService } from './play.service';
+import { PlayService } from '../services/play.service';
+import { PlayType } from '../models/playType';
+import { PlayTypeService } from '../services/play-type.service';
 
 @Component({
     selector: 'app-plays-detail.component',
@@ -17,10 +19,12 @@ import { PlayService } from './play.service';
 })
 export class PlaysDetailComponent {
     play!: Play;
+    playTypes: PlayType[] = [];
 
     constructor(
         private route: ActivatedRoute,
         private playService: PlayService,
+        private playTypeService: PlayTypeService,
         private location: Location,
         private cdr: ChangeDetectorRef
     ) {}
@@ -29,6 +33,13 @@ export class PlaysDetailComponent {
         const code = this.route.snapshot.paramMap.get('code')!;
         this.playService.get(code).subscribe(dataPackage => {
             this.play = <Play> dataPackage.data;
+            this.cdr.detectChanges();
+        });
+    }
+
+    getPlayTypes(): void {
+        this.playTypeService.all().subscribe(dataPackage => {
+            this.playTypes = <PlayType[]> dataPackage.data;
             this.cdr.detectChanges();
         });
     }
