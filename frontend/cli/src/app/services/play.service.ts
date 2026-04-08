@@ -23,6 +23,6 @@ export class PlayService {
     }
 
     save(play: Play): Observable<DataPackage> {
-        return this.http.put<DataPackage>(this.playsUrl, play);
+        return this.http.put<DataPackage>(`${this.playsUrl}/${play.id}`, play);
     }
 }
