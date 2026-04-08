@@ -31,10 +31,15 @@ export class PlaysDetailComponent {
 
     get(): void {
         const code = this.route.snapshot.paramMap.get('code')!;
-        this.playService.get(code).subscribe(dataPackage => {
-            this.play = <Play> dataPackage.data;
-            this.cdr.detectChanges();
-        });
+        if (code === 'new') {
+            this.play = <Play> {type:{}};
+        }
+        else {
+            this.playService.get(code).subscribe(dataPackage => {
+                this.play = <Play> dataPackage.data;
+                this.cdr.detectChanges();
+            });
+        }
     }
 
     getPlayTypes(): void {
