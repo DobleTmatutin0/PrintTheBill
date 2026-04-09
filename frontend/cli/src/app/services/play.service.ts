@@ -23,6 +23,12 @@ export class PlayService {
     }
 
     save(play: Play): Observable<DataPackage> {
-        return this.http.put<DataPackage>(`${this.playsUrl}/${play.id}`, play);
+        return play.id 
+        ? this.http.put<DataPackage>(`${this.playsUrl}/${play.id}`, play)
+        : this.http.post<DataPackage>(this.playsUrl, play);
+    }
+
+    remove(id: number): Observable<DataPackage> {
+        return this.http.delete<DataPackage>(`${this.playsUrl}/${id}`)
     }
 }
