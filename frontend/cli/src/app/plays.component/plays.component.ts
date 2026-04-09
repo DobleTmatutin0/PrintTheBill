@@ -28,6 +28,12 @@ export class PlaysComponent {
         });
     }
 
+    remove(id: number): void {
+        if (confirm("Esta seguro de que desea eliminar la obra?")) {
+            this.playService.remove(id).subscribe(dataPackage => {this.getPlays();});
+        }
+    }
+
     ngOnInit() {
         this.getPlays();
     }
