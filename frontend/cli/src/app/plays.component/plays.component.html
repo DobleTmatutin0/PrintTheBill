@@ -18,6 +18,9 @@
                     <a routerLink="/plays/{{play.code}}">
                         <i class="fa-solid fa-pencil"></i>
                     </a>
+                    <a (click)="remove(play.id)">
+                        <i class="fa-solid fa-remove"></i>
+                    </a>
                 </td>
             </tr>
         </tbody>
