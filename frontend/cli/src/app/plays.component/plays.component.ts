@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PlayService } from '../services/play.service';
 import { Play } from '../models/play';
+import { ModalService } from '../shared-components/modal.component/modal.service';
 
 @Component({
     selector: 'app-plays.component',
@@ -18,7 +19,8 @@ export class PlaysComponent {
     
     constructor(
         private playService: PlayService,
-        private cdr: ChangeDetectorRef
+        private cdr: ChangeDetectorRef,
+        private modalService: ModalService
     ) {}
 
     getPlays(): void {
@@ -29,9 +31,17 @@ export class PlaysComponent {
     }
 
     remove(id: number): void {
-        if (confirm("Esta seguro de que desea eliminar la obra?")) {
-            this.playService.remove(id).subscribe(dataPackage => {this.getPlays();});
-        }
+        let innerThis = this; // esto se hace para no perder la referncia en la funcion
+
+        this.modalService.confirm("Eliminar obra",
+            "Esta seguro de que desea eliminar la obra?",
+            "Si elemina la obra no podra volver a ser utilizada"
+        )
+        .then(
+            function() {
+                innerThis.playService.remove(id).subscribe(dataPackage => {innerThis.getPlays();});
+            }
+        );
     }
 
     ngOnInit() {
