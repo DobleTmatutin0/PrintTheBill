@@ -2,20 +2,25 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { PlayService } from '../services/play.service';
-import { Play } from '../models/play';
 import { ModalService } from '../shared-components/modal.component/modal.service';
+import { ResultsPage } from '../models/results-page';
+import { PaginationComponent } from '../shared-components/pagination.component/pagination.component';
 
 @Component({
     selector: 'app-plays.component',
     imports: [
         CommonModule,
-        RouterModule
+        RouterModule,
+        PaginationComponent
     ],
     templateUrl: 'plays.component.html',
     styles: ``,
 })
 export class PlaysComponent {
-    plays: Play[] = [];
+    resultsPage: ResultsPage = <ResultsPage> {};
+    pages!: number[];
+    currentPage: number = 1;
+    currentPageSize: number = 1;
     
     constructor(
         private playService: PlayService,
@@ -24,10 +29,15 @@ export class PlaysComponent {
     ) {}
 
     getPlays(): void {
-        this.playService.all().subscribe(dataPackage => {
-            this.plays = <Play[]> dataPackage.data;
+        this.playService.byPage(this.currentPage, this.currentPageSize).subscribe(dataPackage => {
+            this.resultsPage = <ResultsPage> dataPackage.data;
             this.cdr.detectChanges();
         });
+    }
+
+    onPageChangeRequested(page: number): void {
+        this.currentPage = page;
+        this.getPlays();
     }
 
     remove(id: number): void {
