@@ -22,6 +22,10 @@ export class PlayService {
         return this.http.get<DataPackage>(`${this.playsUrl}/code/${code}`);
     }
 
+    byPage(page: number, size: number): Observable<DataPackage> {
+        return this.http.get<DataPackage>(`${this.playsUrl}/page?page=${page-1}&size=${size}`);
+    }
+
     save(play: Play): Observable<DataPackage> {
         return play.id 
         ? this.http.put<DataPackage>(`${this.playsUrl}/${play.id}`, play)
