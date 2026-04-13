@@ -9,7 +9,7 @@
             <th></th>
         </thead>
         <tbody>
-            <tr *ngFor = "let play of plays; index as i">
+            <tr *ngFor = "let play of resultsPage.content; index as i">
                 <td>{{ i + 1 }}</td>
                 <td>{{ play.code }}</td>
                 <td>{{ play.name }}</td>
@@ -24,6 +24,16 @@
                 </td>
             </tr>
         </tbody>
+        <tfoot>
+            <app-pagination
+            [totalPages] = "resultsPage.totalPages"
+            [currentPage] = "currentPage"
+            (pageChangeRequested) = "onPageChangeRequested($event)"
+            [number] = "resultsPage.number"
+            [hidden]="resultsPage.numberOfElements < 1"
+            >
+            </app-pagination>
+        </tfoot>
     </table>
 </div>
 
