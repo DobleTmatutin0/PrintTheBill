@@ -18,7 +18,7 @@
                 placeholder="Cliente"
                 class="form-control"
                 required
-                [ngbTypeahead]
+                [ngbTypeahead]="searchCustomer"
                 [editable]="false"
                 [resultFormatter] = "resulFormat"
                 [insputFormatter] = "inputFormat"
@@ -38,6 +38,35 @@
                         </th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr *ngFor="let performance of bordero.performances; index as i">
+                        <td>{{ i }}</td>
+                        <td>
+                            <input
+                                [(ngModel)] = "performance.play"
+                                name="performancePlay {{i}}"
+                                placeholder="Obra"
+                                class="form-control"
+                                required
+                                [ngbTypeahead] ="searchPlay"
+                                [editable]="false"
+                                [resultFormatter] = "resulFormat"
+                                [insputFormatter] = "inputFormat"
+                            >
+                        </td>
+                        <td>
+                            <input
+                                class="form-control"
+                                name="audience{{i}}"
+                                [(ngModel)] ="performance.audience">
+                        </td>
+                        <td>
+                            <button class="btn btn-default" (click)="removePerformance(performance)">
+                                <i class="fa-solid fa-remove"></i> 
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </form>
