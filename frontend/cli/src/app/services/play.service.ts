@@ -26,6 +26,10 @@ export class PlayService {
         return this.http.get<DataPackage>(`${this.playsUrl}/page?page=${page-1}&size=${size}`);
     }
 
+    search(term: string): Observable<DataPackage> {
+        return this.http.get<DataPackage>(`${this.playsUrl}/search/${term}`);
+    }
+
     save(play: Play): Observable<DataPackage> {
         return play.id 
         ? this.http.put<DataPackage>(`${this.playsUrl}/${play.id}`, play)
