@@ -20,7 +20,7 @@ export class PlaysComponent {
     resultsPage: ResultsPage = <ResultsPage> {};
     pages!: number[];
     currentPage: number = 1;
-    currentPageSize: number = 1;
+    currentPageSize: number = 3;
     
     constructor(
         private playService: PlayService,
