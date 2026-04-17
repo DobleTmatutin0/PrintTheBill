@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import unpsjb.labprog.backend.model.Customer;
+import unpsjb.labprog.backend.model.Play;
 import unpsjb.labprog.backend.business.services.Customer_Service;
 import unpsjb.labprog.backend.Response;
 
@@ -31,6 +33,14 @@ public class Customer_Presenter {
         return Response.ok(customer_Service.findByPage(page, size));
     }
 
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Object> findById(@PathVariable("id") int id) {
+        Customer aCustomerOrNull = this.customer_Service.findById(id);
+        return (aCustomerOrNull != null)
+            ? Response.ok(aCustomerOrNull)
+            : Response.notFound("The customer with id " + id + " was not found");
+    }
+
     @GetMapping("/search/{term}")
     public ResponseEntity<Object> search(@PathVariable("term") String term) {
         return Response.ok(customer_Service.search(term));
@@ -40,6 +50,17 @@ public class Customer_Presenter {
     public ResponseEntity<Object> create(@RequestBody Customer aCustomer) {
         return Response.ok((customer_Service.save(aCustomer)));
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> update(@RequestBody Customer aCustomer) {
+        if (aCustomer.getId() <= 0) {
+            return Response.error(
+                aCustomer,
+                "Invalid ID"
+            );
+        }
+        return Response.ok(this.customer_Service.save(aCustomer));
+    }    
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id") int id) {
