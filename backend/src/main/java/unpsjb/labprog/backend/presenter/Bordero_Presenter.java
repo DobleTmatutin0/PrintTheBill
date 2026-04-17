@@ -34,7 +34,7 @@ public class Bordero_Presenter {
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "10") int size
     ) {
-        return.Response.ok(bordero_Service.findByPage(page, size));
+        return Response.ok(bordero_Service.findByPage(page, size));
     }
 
     @GetMapping("/id/{id}")
