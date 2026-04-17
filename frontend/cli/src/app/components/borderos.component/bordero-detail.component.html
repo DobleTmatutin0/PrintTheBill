@@ -40,11 +40,11 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let performance of bordero.performances; index as i">
-                        <td>{{ i }}</td>
+                        <td>{{ i + 1 }}</td>
                         <td>
                             <input
                                 [(ngModel)] = "performance.play"
-                                name="performancePlay {{i}}"
+                                name="performancePlay{{i}}"
                                 placeholder="Obra"
                                 class="form-control"
                                 required
