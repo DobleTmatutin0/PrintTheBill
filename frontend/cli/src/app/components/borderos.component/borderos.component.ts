@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BorderoService } from '../../services/bordero.service';
 
 @Component({
   selector: 'app-bordero.component',
@@ -6,4 +7,15 @@ import { Component } from '@angular/core';
   template: ` <p>bordero.component works!</p> `,
   styles: ``,
 })
-export class BorderosComponent {}
+export class BorderosComponent {
+
+    
+    constructor(
+        private borderoService: BorderoService
+    ) {
+
+    }
+
+    
+
+}
