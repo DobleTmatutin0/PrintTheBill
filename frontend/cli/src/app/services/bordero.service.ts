@@ -23,11 +23,18 @@ export class BorderoService {
         return this.httpClient.get<DataPackage>(`${this.borderosUrl}/id/${id}`);
     }
 
-    save(aBordero: Bordero): Observable<DataPackage> {
-        // falta metodo put en backend
-        // return aBordero.id
-        // ? this.httpClient.put<DataPackage>(`${this.borderosUrl}`, aBordero);
-        //: this.httpClient.post<DataPackage>(this.borderosUrl, aBordero);
-        return this.httpClient.post<DataPackage>(this.borderosUrl, aBordero);
+    byPage(page: number, size: number): Observable<DataPackage> {
+        return this.httpClient.get<DataPackage>(`${this.borderosUrl}/page?page=${page - 1}&size=${size}`);
     }
+
+    save(aBordero: Bordero): Observable<DataPackage> {
+        return aBordero.id
+            ? this.httpClient.put<DataPackage>(`${this.borderosUrl}/${aBordero.id}`, aBordero)
+            : this.httpClient.post<DataPackage>(this.borderosUrl, aBordero);
+    }
+
+    remove(id: number): Observable<DataPackage> {
+        return this.httpClient.delete<DataPackage>(`${this.borderosUrl}/${id}`);
+    }
+    
 }
