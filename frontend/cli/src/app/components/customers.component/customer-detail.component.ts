@@ -2,12 +2,17 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { Customer } from '../../models/customer';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
-import { Location } from '@angular/common';
+import { CommonModule, Location, UpperCasePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-detail.component',
-  imports: [],
-  template: 'customer-detail.component.html',
+  imports: [
+    CommonModule,
+    FormsModule,
+    UpperCasePipe
+  ],
+  templateUrl: 'customer-detail.component.html',
   styles: ``,
 })
 export class CustomerDetailComponent {
