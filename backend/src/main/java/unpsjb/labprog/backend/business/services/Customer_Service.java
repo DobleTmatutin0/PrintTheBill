@@ -18,6 +18,10 @@ public class Customer_Service {
     @Autowired
     private Customer_Repository customer_Repository;
 
+    public Customer findById(int id) {
+        return this.customer_Repository.findById(id).orElse(null);
+    }
+
     public Page<Customer> findByPage(int page, int size) {
         return customer_Repository.findAll(PageRequest.of(page, size));
     }
