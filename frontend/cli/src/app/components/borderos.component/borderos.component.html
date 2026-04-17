@@ -1,9 +1,9 @@
-<h2>Borderos</h2>&nbsp;<a routerLink="/bordero/new" class="btn btn-success">Nuevo Bordero</a>
+<h2>Borderos</h2>&nbsp;<a routerLink="/borderos/new" class="btn btn-success">Nuevo Bordero</a>
 <div class="table-responsive">
     <table class="table table-striped table-sm">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>Date</th>
                 <th>Customer</th>
                 <th>Performances</th>
@@ -15,8 +15,12 @@
                 <td>{{ bordero.date | date:'yyyy-MM-dd' }}</td>
                 <td>{{ bordero.customer.name }}</td>
                 <td>
-                    <a routerLink="/bordero/{{bordero.id}}"><i class="fa fa-pencil"></i></a>   
-                    <a (click)="remove(bordero.id)" [routerLink]=""><i class="fa fa-remove"></i></a> <!-- routerLink?? -->
+                    <a routerLink="/borderos/{{bordero.id}}">
+                        <i class="fa fa-pencil"></i>
+                    </a>   
+                    <a (click)="remove(bordero.id)">
+                        <i class="fa fa-remove"></i>
+                    </a>
                 </td>
             </tr>
         </tbody>    
