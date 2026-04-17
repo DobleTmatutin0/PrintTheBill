@@ -65,7 +65,7 @@ export class BorderoDetailComponent {
                     month: borderoDateAux.getMonth() + 1,
                     day: borderoDateAux.getDate()
                 };
-
+            
                 this.cdr.detectChanges();
             });
 
