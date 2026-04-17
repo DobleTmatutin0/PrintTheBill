@@ -32,6 +32,6 @@ public class Bordero {
     @ManyToOne
     private Customer customer;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.ALL)
     private Collection<Performance> performances;
 }
