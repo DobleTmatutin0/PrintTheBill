@@ -20,7 +20,7 @@ export class CustomersComponent {
 
     resultsPage: ResultsPage = <ResultsPage> {};
     currentPage: number = 1;
-    currentPageSize: number = 1;
+    currentPageSize: number = 5;
 
     constructor(
         private customerService: CustomerService,

@@ -20,7 +20,7 @@ export class BorderosComponent {
 
     resultsPage: ResultsPage = <ResultsPage> {};
     currentPage: number = 1;
-    currentPageSize: number = 10;
+    currentPageSize: number = 5;
     
     constructor(
         private borderoService: BorderoService,
