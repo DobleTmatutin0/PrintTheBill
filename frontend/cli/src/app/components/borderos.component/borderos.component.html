@@ -1,0 +1,34 @@
+<h2>Borderos</h2>&nbsp;<a routerLink="/bordero/new" class="btn btn-success">Nuevo Bordero</a>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Customer</th>
+                <th>Performances</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bordero of resultsPage.content; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ bordero.date | date:'yyyy-MM-dd' }}</td>
+                <td>{{ bordero.customer.name }}</td>
+                <td>
+                    <a routerLink="/bordero/{{bordero.id}}"><i class="fa fa-pencil"></i></a>   
+                    <a (click)="remove(bordero.id)" [routerLink]=""><i class="fa fa-remove"></i></a> <!-- routerLink?? -->
+                </td>
+            </tr>
+        </tbody>    
+        <tfoot>
+            <app-pagination
+                [totalPages]="resultsPage.totalPages"
+                [currentPage]="currentPage"
+                (pageChangeRequested)="onPageChangeRequested($event)"
+                [number]="resultsPage.number"
+                [hidden]="resultsPage.numberOfElements < 1"
+            >
+            </app-pagination>
+        </tfoot>
+    </table>
+</div>
