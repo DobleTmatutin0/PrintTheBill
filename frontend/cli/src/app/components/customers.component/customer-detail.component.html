@@ -1,0 +1,16 @@
+<div *ngIf="customer">
+    <h2>{{ customer.name | uppercase }}</h2>
+    <form #form="ngForm">
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input name="name" placeholder="Nombre" class="form-control" [(ngModel)]="customer.name" required #name="ngModel">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                <div *ngIf="name.errors?.['required']">
+                    el nombre del customer es requerido.
+                </div>
+            </div>
+        </div>
+        <button (click)="goBack()" class="btn btn-danger">Atras</button>
+        <button (click)="save()" class="btn btn-success" [disabled]="form.invalid">Guardar</button>
+    </form>
+</div>
