@@ -69,5 +69,7 @@
                 </tbody>
             </table>
         </div>
+        <button class="btn btn-danger" (click)="goBack()">Atras</button>
+        <button class="btn btn-success" [disabled]="!form.valid" (click)="save()">Guardar</button>
     </form>
 </div>
