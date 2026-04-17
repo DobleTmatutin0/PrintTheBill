@@ -20,8 +20,8 @@
                 required
                 [ngbTypeahead]="searchCustomer"
                 [editable]="false"
-                [resultFormatter] = "resulFormat"
-                [insputFormatter] = "inputFormat"
+                [resultFormatter] = "resultFormat"
+                [inputFormatter] = "inputFormat"
             >
         </div>
         <div class="table-responsive">
@@ -32,7 +32,7 @@
                         <th>Obra</th>
                         <th>Audiencia</th>
                         <th>
-                            <button (click)="addPerformance" class="btn btn-success">
+                            <button (click)="addPerformance()" class="btn btn-success">
                                 Agregar
                             </button>
                         </th>
@@ -50,8 +50,8 @@
                                 required
                                 [ngbTypeahead] ="searchPlay"
                                 [editable]="false"
-                                [resultFormatter] = "resulFormat"
-                                [insputFormatter] = "inputFormat"
+                                [resultFormatter] = "resultFormat"
+                                [inputFormatter] = "inputFormat"
                             >
                         </td>
                         <td>
