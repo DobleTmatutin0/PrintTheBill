@@ -17,7 +17,7 @@ import unpsjb.labprog.backend.business.services.Bordero_Service;
 import unpsjb.labprog.backend.model.Bordero;
 
 @RestController
-@RequestMapping("bordero")
+@RequestMapping("borderos")
 
 public class Bordero_Presenter {
 
