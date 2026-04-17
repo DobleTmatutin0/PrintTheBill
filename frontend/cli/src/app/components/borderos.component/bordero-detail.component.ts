@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Bordero } from '../../models/bordero';
 import { NgbCalendar, NgbDatepickerModule, NgbDateStruct, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -32,10 +32,11 @@ export class BorderoDetailComponent {
     searchFailed: boolean = false;
 
     constructor(
-        private route: ActivatedRoute,
-        private router: Router,
         private borderoService: BorderoService,
         private customerService: CustomerService,
+        private cdr: ChangeDetectorRef,
+        private route: ActivatedRoute,
+        private router: Router,
         private playService: PlayService,
         private location: Location,
         private calendar: NgbCalendar,
@@ -56,6 +57,16 @@ export class BorderoDetailComponent {
         else {
             this.borderoService.get(parseInt(id!)).subscribe(dataPackage => {
                 this.bordero = <Bordero> dataPackage.data;
+
+                //Regenero la fecha
+                const borderoDateAux = new Date(this.bordero.date);
+                this.borderoDate = {
+                    year: borderoDateAux.getFullYear(),
+                    month: borderoDateAux.getMonth() + 1,
+                    day: borderoDateAux.getDate()
+                };
+
+                this.cdr.detectChanges();
             });
 
         }
