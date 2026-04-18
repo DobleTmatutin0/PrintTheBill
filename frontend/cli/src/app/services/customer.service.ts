@@ -29,7 +29,7 @@ export class CustomerService {
     }
 
     remove(id: number): Observable<DataPackage> {
-        return this.httpClient.delete<DataPackage>(`${this.customersUrl}/delete/${id}`);
+        return this.httpClient.delete<DataPackage>(`${this.customersUrl}/${id}`);
     }
 
     byPage(page: number, size: number): Observable<DataPackage> {
