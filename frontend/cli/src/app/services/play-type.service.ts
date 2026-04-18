@@ -16,4 +16,8 @@ export class PlayTypeService {
     all(): Observable<DataPackage> {
         return this.http.get<DataPackage>(this.playTypeUrl);
     }
+
+    search(term: string): Observable<DataPackage> {
+        return this.http.get<DataPackage>(`${this.playTypeUrl}/search/${term}`);
+    }
 }
